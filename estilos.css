@@ -5,3 +5,55 @@
 .goal{background:white;border:1px solid #e0e9e5;border-radius:18px;padding:20px;margin-bottom:16px;box-shadow:0 5px 20px #193b3210}.goal-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.goal h2{margin:0;font-size:20px}.goal input{border:1px solid #cbdad3;border-radius:10px;padding:10px;font:inherit;color:#20313b;max-width:210px}.goal-counters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.goal-counters>div{background:#f1f6f3;border-radius:12px;padding:15px;display:grid;gap:5px;text-align:center}.goal-counters strong{font-size:30px;color:#126558}.goal-counters small{font-size:13px;letter-spacing:0}.goal p{font-size:12px;color:#647772;margin-bottom:0}@media(max-width:480px){.goal-heading label{width:100%}.goal input{max-width:none;width:100%}}
 
 .session-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 12px}.session-results>div{background:#eff4f1;border-radius:12px;padding:16px 8px;display:grid;gap:5px;text-align:center}.session-results strong{font-size:clamp(24px,4vw,34px);color:#126558}.session-results small{font-size:12px;color:#60726e}.session-track{height:10px;background:#e9efec;border-radius:99px;overflow:hidden;margin:0 0 18px}.session-track>div{height:100%;width:0;background:#126558;border-radius:99px;transition:width .2s}#sessionEnd{text-align:center}
+
+.card-accuracy{font-size:.88rem;opacity:.8;text-align:center;margin:.6rem 0}
+
+.study-instructions{text-align:center;font-size:13px;color:#647772;margin:0 0 14px}
+
+.category-panel{background:#fff;border:1px solid #e0e9e5;border-radius:18px;padding:20px;margin-bottom:16px;box-shadow:0 5px 20px #193b3210}.category-heading h2{font-size:19px;margin:0 0 6px;color:#164d45}.category-heading p{font-size:12px;color:#647772;margin:0 0 12px}.category-scroll{overflow-x:auto}.category-table{width:100%;border-collapse:collapse;font-size:13px;text-align:left}.category-table th,.category-table td{padding:10px 8px;border-bottom:1px solid #e6eeea}.category-table th{color:#45665d}.category-table th:not(:first-child),.category-table td:not(:first-child){text-align:right;white-space:nowrap}.category-selected{background:#eaf5ee}.toolbar{grid-template-columns:repeat(5,minmax(0,1fr))}@media(max-width:700px){.toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:450px){.category-panel{padding:12px}.category-table{font-size:12px}}
+
+/* QA-014: cabecera decorativa aislada del área de estudio */
+header.hero{position:relative;isolation:isolate;overflow:hidden;min-height:220px;padding:24px 26px;border-radius:18px;background:#102d38 url('cabecera-japon.jpg') center 56% / cover no-repeat;color:#fff;align-items:flex-start;gap:16px;box-shadow:0 5px 20px #193b321a}
+header.hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(9,25,32,.88) 0%,rgba(9,25,32,.65) 48%,rgba(9,25,32,.22) 100%);pointer-events:none}
+header.hero .hero-copy{max-width:75%}
+header.hero h1,header.hero p,header.hero small{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+header.hero small{opacity:.9}
+header.hero .japanese-date{font-size:clamp(15px,2.5vw,19px);font-weight:650;letter-spacing:.04em;margin-bottom:14px;color:#fff;text-shadow:0 1px 4px #000}
+header.hero #qaToggle{background:rgba(245,250,248,.94);color:#164d45;flex-shrink:0}
+/* Las tarjetas conservan fondo sólido y legibilidad independiente de la imagen */
+.study{background:#fff}
+@media(max-width:560px){header.hero{min-height:185px;padding:20px 16px;background-position:57% center}header.hero .hero-copy{max-width:78%}header.hero h1{font-size:clamp(25px,7vw,34px)}header.hero p{font-size:13px}header.hero #qaToggle{padding:10px;font-size:12px}}
+
+/* QA-015: valoración en cuadrícula 2x2 en pantallas pequeñas.
+   Solo se activa cuando las cuatro opciones de valoración están visibles. */
+@media (max-width:560px) {
+  .study .actions:has(#again:not([hidden])) {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    max-width:320px;
+    margin-inline:auto;
+  }
+  .study .actions:has(#again:not([hidden])) > button:not([hidden]) {
+    width:100%;
+    min-height:46px;
+  }
+  .study .actions > button[hidden] { display:none; }
+}
+
+/* QA-017: meteorología independiente del progreso de estudio */
+header.hero{overflow:visible}
+header.hero::before{border-radius:inherit}
+header.hero .hero-copy{position:relative;z-index:1}
+.weather-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:-5px 0 12px;color:#fff;font-size:14px;text-shadow:0 1px 3px #000}
+.weather-change{padding:5px 9px;font-size:11px;background:rgba(245,250,248,.94);color:#164d45;border-radius:7px;text-shadow:none}
+.weather-picker{position:relative;z-index:5;width:min(420px,100%);padding:12px;margin:0 0 14px;background:#f8fbfa;color:#20313b;border-radius:10px;box-shadow:0 8px 24px #0004;text-shadow:none}
+.weather-picker[hidden]{display:none}
+.weather-picker label{font-size:12px}
+.weather-search{display:flex;gap:7px;margin-top:6px}
+.weather-search input{min-width:0;flex:1;border:1px solid #cbdad3;border-radius:8px;padding:9px;font-size:14px}
+.weather-search button{padding:9px 11px;font-size:13px}
+#weatherMessage{font-size:12px;margin-top:7px}
+.weather-results{display:grid;gap:5px;margin-top:7px;max-height:185px;overflow:auto}
+.weather-results button{background:#e9f1ed;color:#245a50;text-align:left;padding:9px;font-size:13px}
+@media(max-width:560px){.weather-line{font-size:12px;gap:5px 8px}.weather-change{font-size:10px;padding:5px 7px}header.hero{min-height:185px}.weather-picker{width:100%}}
